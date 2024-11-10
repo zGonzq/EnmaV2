@@ -1,34 +1,36 @@
 const { devs, testServer } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
+const { EmbedBuilder } = require('discord.js')
 
 module.exports = async (client, interaction) => {
-  if (!interaction.isChatInputCommand()) return;
 
-  const localCommands = getLocalCommands();
+    const embed = new EmbedBuilder(client)
 
-  try {
-    const commandObject = localCommands.find(
-      (cmd) => cmd.name === interaction.commandName
-    );
+    if (!interaction.isChatInputCommand()) return;
 
-    if (!commandObject) return;
+    const localCommands = getLocalCommands();
 
-    if (commandObject.devOnly) {
-      if (!devs.includes(interaction.member.id)) {
-        interaction.reply({
-          content: 'Only developers are allowed to run this command.',
-          ephemeral: true,
-        });
-        return;
-      }
-    }
+    try {
+        const commandObject = localCommands.find((cmd) => cmd.name === interaction.commandName);
 
-    if (commandObject.testOnly) {
-      if (!(interaction.guild.id === testServer)) {
-        interaction.reply({
-          content: 'This command cannot be ran here.',
-          ephemeral: true,
-        });
+        if (!commandObject) return;
+
+        if (commandObject.devOnly) {
+            if (!devs.includes(interaction.member.id)) {
+                  interaction.reply({
+                    embeds: [embed.setTitle('Error').setDescription('Este comando es solo para desarrolladores.').setColor('Red')],
+                    phemeral: true,
+                  });
+                  return;
+              }
+          }
+
+        if (commandObject.testOnly) {
+            if (!(interaction.guild.id === testServer)) {
+                interaction.reply({
+                  embeds: [embed.setTitle('Error').setDescription('Este comando solo se puede usar en el servidor de pruebas.').setColor('Red')],
+                    ephemeral: true,
+                });
         return;
       }
     }
@@ -37,7 +39,7 @@ module.exports = async (client, interaction) => {
       for (const permission of commandObject.permissionsRequired) {
         if (!interaction.member.permissions.has(permission)) {
           interaction.reply({
-            content: 'Not enough permissions.',
+            embeds: [embed.setTitle('Error').setDescription('No tienes suficientes permisos.').setColor('Red')],
             ephemeral: true,
           });
           return;
@@ -51,7 +53,7 @@ module.exports = async (client, interaction) => {
 
         if (!bot.permissions.has(permission)) {
           interaction.reply({
-            content: "I don't have enough permissions.",
+            embeds: [embed.setTitle('Error').setDescription('No tengo suficientes permisos.').setColor('Red')],
             ephemeral: true,
           });
           return;
@@ -61,6 +63,6 @@ module.exports = async (client, interaction) => {
 
     await commandObject.callback(client, interaction);
   } catch (error) {
-    console.log(`There was an error running this command: ${error}`);
+    console.log(`Sucedio un error al ejecutar el comando: ${error}`);
   }
 };
