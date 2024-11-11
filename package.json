@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js"
+    "dev": "bun --watch src/index.js "
   },
   "keywords": [],
   "author": "",
@@ -13,7 +13,6 @@
   "dependencies": {
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",
-    "lodash.snakecase": "^4.1.1",
     "mongoose": "^8.8.1"
   },
   "devDependencies": {
