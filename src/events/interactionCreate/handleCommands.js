@@ -4,7 +4,7 @@ const { EmbedBuilder } = require('discord.js')
 
 module.exports = async (client, interaction) => {
 
-    const embed = new EmbedBuilder(client)
+    const embed = new EmbedBuilder()
 
     if (!interaction.isChatInputCommand()) return;
 
