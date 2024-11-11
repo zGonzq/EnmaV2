@@ -1,5 +1,4 @@
 const { ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
-const { permission } = require('process');
 module.exports = {
     name: 'ban',
     description: 'Banea a un usuario.',
