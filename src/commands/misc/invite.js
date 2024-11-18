@@ -3,9 +3,6 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
     name: 'invite',
     description: '¡Invita al bot a tu servidor!',
-    // devOnly: true,
-    // testOnly: true,
-    // options: Object[],
 
     callback: async (client, interaction) => {
 
