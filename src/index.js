@@ -3,9 +3,6 @@ const { Client, IntentsBitField, ActivityType } = require('discord.js');
 const eventHandler = require('./handlers/eventHandler');
 const mongoose = require('mongoose');
 
-console.log('MONGO_URI:', process.env.MONGO_URI);
-console.log('BOT_TOKEN:', process.env.BOT_TOKEN);
-
 const client = new Client({
     intents: [
         IntentsBitField.Flags.Guilds,
