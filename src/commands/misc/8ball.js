@@ -29,7 +29,8 @@ module.exports = {
             '¡Claro que no!',
             '¡Por supuesto!',
             '¡Por supuesto que no!',
-            '¡Por supuesto que sí!'
+            '¡Por supuesto que sí!',
+            '¡Por supuesto que no lo sé!',
         ];
 
         const answer = answers[Math.floor(Math.random() * answers.length)];
