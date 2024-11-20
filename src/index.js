@@ -22,7 +22,8 @@ const client = new Client({
         await client.login(process.env.BOT_TOKEN);
         client.user.setActivity({ name: '🤔', type: ActivityType.Watching });
 
-        
+        console.log('🚀 Bot iniciado con éxito');
+
     } catch (error) {
         console.log(error);
     }
