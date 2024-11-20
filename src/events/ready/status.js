@@ -16,13 +16,13 @@ module.exports = async (client, message) => {
         { name: "Estado", value: "Bot en linea" },
         { name: "CPU", value: os.cpus().map(cpu => cpu.model)[0] },
         { name: "Memoria", value: `${(os.totalmem() - os.freemem()) / 1024 / 1024 / 1024} GB / ${os.totalmem() / 1024 / 1024 / 1024} GB` },
-        { name: "Plataforma", value: os.platform() },
-        { name: "Versión de Node", value: process.version },
-        { name: "Versión de Discord.js", value: require('discord.js').version },
+        { name: "Plataforma", value: os.platform(), inline: true },
+        { name: "Versión de Node", value: process.version, inline: true },
+        { name: "Versión de Discord.js", value: require('discord.js').version, inline: true },
         { name: "Base de datos", value: {0: "Desconectado", 1: "Conectado", 2: "Conectando", 3: "Desconectando"}[mongoose.connection.readyState] },
 
     )
-    embed.setColor("Random")
+    embed.setColor("Blurple")
 
     const sala = client.channels.cache.get('1188964850282541157');
 
