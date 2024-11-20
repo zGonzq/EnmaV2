@@ -15,7 +15,7 @@ const client = new Client({
 (async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
-        console.log('🛫 Conectado a la base de datos');
+        console.log('🛫 Conectado a la base de datos: ' + mongoose.connection.readyState);
 
         eventHandler(client);
         
