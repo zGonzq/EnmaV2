@@ -14,14 +14,15 @@ const client = new Client({
 
 (async () => {
     try {
-        eventHandler(client);
         await mongoose.connect(process.env.MONGO_URI);
         console.log('🛫 Conectado a la base de datos');
+
+        eventHandler(client);
+        
+        await client.login(process.env.BOT_TOKEN);
+        client.user.setActivity({ name: '🤔', type: ActivityType.Watching });
+        
     } catch (error) {
         console.log(error);
     }
 })();
-
-client.login(process.env.BOT_TOKEN).then(() => {
-    client.user.setActivity({ name: '🤔', type: ActivityType.Watching });
-});
