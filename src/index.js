@@ -21,7 +21,7 @@ const client = new Client({
         eventHandler(client);
         
         await client.login(process.env.BOT_TOKEN);
-        client.user.setActivity({ name: 'Version 2 soon.', type: ActivityType.Watching });
+        client.user.setActivity({ name: 'Version 2 soon. 🚀', type: ActivityType.Watching });
 
     } catch (error) {
         console.log(error);
