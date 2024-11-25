@@ -72,7 +72,7 @@ module.exports = {
             { name: 'Roulette', value: getCooldownStatus(data.lastRoulette, 'minutes') },
         ];
 
-        const cooldownsText = cooldowns.map(cooldown => `\`\`\`${cooldown.name}: ${cooldown.value}\`\`\``).join('\n');
+        const cooldownsText = cooldowns.map(cooldown => `${cooldown.name}: ${cooldown.value}`).join('\n');
 
         embed.setTitle(`Balance de ${targetUser.tag}`)
             .setColor('Blue')
