@@ -26,6 +26,10 @@ module.exports = {
 
         const targetUser = interaction.options.getUser('user') || interaction.user;
 
+        if(targetUser.bot) {
+            return interaction.reply({ embeds: [embed.setDescription('No puedes ver el balance de un bot.').setColor('Red')] });
+        }
+
         let data = await economy.findOne({ userId: targetUser.id, guildId: interaction.guild.id });
 
         if (!data) {
