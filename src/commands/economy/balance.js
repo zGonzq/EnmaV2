@@ -48,17 +48,17 @@ module.exports = {
             const diffHours = Math.floor(diff / 1000 / 60 / 60);
 
             if (cooldown === 'hourly' && diffHours < 1) {
-                return `Disponible en ${60 - diffMinutes % 60} minutos`;
+                return `Disponible en ${60 - diffMinutes % 60} minutos 🔴`;
             } else if (cooldown === 'daily' && diffHours < 24) {
-                return `Disponible en ${24 - diffHours} horas`;
+                return `Disponible en ${24 - diffHours} horas 🔴`;
             } else if (cooldown === 'weekly' && diffHours < 168) {
-                return `Disponible en ${168 - diffHours} horas`;
+                return `Disponible en ${168 - diffHours} horas 🔴`;
             } else if (cooldown === 'minutes' && diffMinutes < 5) {
-                return `Disponible en ${5 - diffMinutes} minutos`;
+                return `Disponible en ${5 - diffMinutes} minutos 🔴`;
             } else if (cooldown === 'half-hour' && diffMinutes < 30) {
-                return `Disponible en ${30 - diffMinutes} minutos`;
+                return `Disponible en ${30 - diffMinutes} minutos 🔴`;
             } else {
-                return 'Disponible';
+                return 'Disponible 🟢';
             }
         };
 
