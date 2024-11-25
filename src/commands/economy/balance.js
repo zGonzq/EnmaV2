@@ -58,24 +58,28 @@ module.exports = {
             }
         };
 
-        const fields = [
-            { name: 'Balance', value: `${data.balance} monedas`, inline: false },
-            { name: 'Daily', value: getCooldownStatus(data.lastDaily, 'daily'), inline: true },
-            { name: 'Work', value: getCooldownStatus(data.lastWork, 'half-hour'), inline: true },
-            { name: 'Miniwork', value: getCooldownStatus(data.lastMiniwork, 'minutes'), inline: true },
-            { name: 'Mine', value: getCooldownStatus(data.lastMine, 'minutes'), inline: true },
-            { name: 'Rob', value: getCooldownStatus(data.lastRob, 'hourly'), inline: true },
-            { name: 'Fish', value: getCooldownStatus(data.lastFish, 'minutes'), inline: true },
-            { name: 'Crime', value: getCooldownStatus(data.lastCrime, 'minutes'), inline: true },
-            { name: 'Gamble', value: getCooldownStatus(data.lastGamble, 'minutes'), inline: true },
-            { name: 'Bet', value: getCooldownStatus(data.lastBet, 'minutes'), inline: true },
-            { name: 'Coinflip', value: getCooldownStatus(data.lastCoinflip, 'minutes'), inline: true },
-            { name: 'Roulette', value: getCooldownStatus(data.lastRoulette, 'minutes'), inline: true },
+        const cooldowns = [
+            { name: 'Daily', value: getCooldownStatus(data.lastDaily, 'daily') },
+            { name: 'Work', value: getCooldownStatus(data.lastWork, 'half-hour') },
+            { name: 'Miniwork', value: getCooldownStatus(data.lastMiniwork, 'minutes') },
+            { name: 'Mine', value: getCooldownStatus(data.lastMine, 'minutes') },
+            { name: 'Rob', value: getCooldownStatus(data.lastRob, 'hourly') },
+            { name: 'Fish', value: getCooldownStatus(data.lastFish, 'minutes') },
+            { name: 'Crime', value: getCooldownStatus(data.lastCrime, 'minutes') },
+            { name: 'Gamble', value: getCooldownStatus(data.lastGamble, 'minutes') },
+            { name: 'Bet', value: getCooldownStatus(data.lastBet, 'minutes') },
+            { name: 'Coinflip', value: getCooldownStatus(data.lastCoinflip, 'minutes') },
+            { name: 'Roulette', value: getCooldownStatus(data.lastRoulette, 'minutes') },
         ];
+
+        const cooldownsText = cooldowns.map(cooldown => `${cooldown.name}: ${cooldown.value}`).join('\n');
 
         embed.setTitle(`Balance de ${targetUser.tag}`)
             .setColor('Blue')
-            .setFields(fields);
+            .addFields(
+                { name: 'Balance', value: `${data.balance} monedas`, inline: false },
+                { name: 'Tiempos restantes', value: cooldownsText, inline: false }
+            );
 
         interaction.reply({ embeds: [embed] });
     }
