@@ -59,7 +59,7 @@ module.exports = {
         };
 
         const fields = [
-            { name: 'Balance', value: `${data.balance} monedas`, inline: true },
+            { name: 'Balance', value: `${data.balance} monedas`, inline: false },
             { name: 'Daily', value: getCooldownStatus(data.lastDaily, 'daily'), inline: true },
             { name: 'Work', value: getCooldownStatus(data.lastWork, 'half-hour'), inline: true },
             { name: 'Miniwork', value: getCooldownStatus(data.lastMiniwork, 'minutes'), inline: true },
