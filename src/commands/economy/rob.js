@@ -45,6 +45,10 @@ module.exports = {
             return interaction.reply({ embeds: [embed.setTitle('Error').setDescription('No puedes robarte a ti mismo.').setColor('Red')], ephemeral: true });
         }
 
+        if (targetUser.bot) {
+            return interaction.reply({ embeds: [embed.setTitle('Error').setDescription('No puedes robarle a un bot.').setColor('Red')], ephemeral: true });
+        }
+
         let userData = await economy.findOne({ userId: interaction.user.id, guildId: interaction.guild.id });
         let targetData = await economy.findOne({ userId: targetUser.id, guildId: interaction.guild.id });
 
