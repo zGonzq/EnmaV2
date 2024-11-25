@@ -33,14 +33,14 @@ module.exports = {
 
         if (diffHours < 24) {
             const hoursLeft = 24 - diffHours;
-            return interaction.reply({ embeds: [embed.setDescription(`Ya has reclamado tus monedas diarias. Puedes reclamar de nuevo en ${hoursLeft} horas.`).setColor('Red')] });
+            return interaction.reply({ embeds: [embed.setTitle('Monedas diarias').setDescription(`Ya has reclamado tus monedas diarias. Puedes reclamar de nuevo en ${hoursLeft} horas.`).setColor('Red')] });
         }
 
-        const earned = Math.floor(Math.random() * 201) + 800; 
+        const earned = Math.floor(Math.random() * 201) + 800;
         data.balance += earned;
         data.lastDaily = now;
         await data.save();
 
-        interaction.reply({ embeds: [embed.setDescription(`Has reclamado tus monedas diarias y ganado ${earned} monedas. Ahora tienes ${data.balance} monedas.`).setColor('Green')] });
+        interaction.reply({ embeds: [embed.setTitle('Monedas diarias').setDescription(`Has reclamado tus monedas diarias y ganado ${earned} monedas. Ahora tienes ${data.balance} monedas.`).setColor('Green')] });
     }
 }

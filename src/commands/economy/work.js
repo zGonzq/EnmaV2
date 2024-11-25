@@ -33,14 +33,14 @@ module.exports = {
 
         if (diffMinutes < 30) {
             const minutesLeft = 30 - diffMinutes;
-            return interaction.reply({ embeds: [embed.setDescription(`Ya has trabajado recientemente. Puedes trabajar de nuevo en ${minutesLeft} minutos.`).setColor('Red')] });
+            return interaction.reply({ embeds: [embed.setTitle('Trabajo').setDescription(`Ya has trabajado recientemente. Puedes trabajar de nuevo en ${minutesLeft} minutos.`).setColor('Red')] });
         }
-        
+
         data.lastWork = now;
         const earned = Math.floor(Math.random() * 201) + 100;
         data.balance += earned;
         await data.save();
 
-        interaction.reply({ embeds: [embed.setDescription(`Has trabajado y ganado ${earned} monedas. Ahora tienes ${data.balance} monedas.`).setColor('Green')] });
+        interaction.reply({ embeds: [embed.setTitle('Trabajo').setDescription(`Has trabajado y ganado ${earned} monedas. Ahora tienes ${data.balance} monedas.`).setColor('Green')] });
     }
 }
