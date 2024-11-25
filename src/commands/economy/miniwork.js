@@ -2,8 +2,8 @@ const { EmbedBuilder } = require("discord.js");
 const economy = require('../../models/economy');
 
 module.exports = {
-    name: 'work',
-    description: 'Trabaja para ganar monedas.',
+    name: 'miniwork',
+    description: 'Trabaja por un corto período para ganar algunas monedas.',
 
     /**
      * 
@@ -26,18 +26,18 @@ module.exports = {
             await data.save();
         }
 
-        const lastWork = data.lastWork;
+        const lastMiniwork = data.lastMiniwork;
         const now = new Date();
-        const diff = now - lastWork;
+        const diff = now - lastMiniwork;
         const diffMinutes = Math.floor(diff / 1000 / 60);
 
-        if (diffMinutes < 30) {
-            const minutesLeft = 30 - diffMinutes;
+        if (diffMinutes < 5) {
+            const minutesLeft = 5 - diffMinutes;
             return interaction.reply({ embeds: [embed.setDescription(`Ya has trabajado recientemente. Puedes trabajar de nuevo en ${minutesLeft} minutos.`).setColor('Red')] });
         }
         
-        data.lastWork = now;
-        const earned = Math.floor(Math.random() * 201) + 100;
+        data.lastMiniwork = now;
+        const earned = Math.floor(Math.random() * 50) + 5;
         data.balance += earned;
         await data.save();
 
