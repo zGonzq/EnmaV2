@@ -15,7 +15,7 @@ const client = new Client({
 
 const activities = [
     { name: 'Version 2 soon. 🚀', type: ActivityType.Watching },
-    { name: 'Economy system in process 🚀', type: ActivityType.Playing },
+    { name: 'Economy system in progress. 🚀', type: ActivityType.Watching },
     { name:  `${client.users.cache.size} users. 🚀`, type: ActivityType.Watching },
     { name: `${client.guilds.cache.size} servers. 🚀`, type: ActivityType.Watching },
 ];
@@ -38,7 +38,7 @@ const activities = [
             client.user.setActivity(activity.name, { type: activity.type });
         };
 
-        setInterval(randomActivity, 60000);
+        setInterval(randomActivity, 10000);
 
     } catch (error) {
         console.log(error);
