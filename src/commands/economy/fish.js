@@ -64,7 +64,7 @@ function getRandomFish() {
         }
     }
 
-    return fishTypes[0];
+    return fishTypes[fishTypes.length - 1];
 }
 
 module.exports = {
@@ -109,9 +109,9 @@ module.exports = {
             const fish = getRandomFish();
             data.balance += fish.price;
             await data.save();
-            return interaction.reply({ embeds: [embed.setTitle('Pesca exitosa').setDescription(`Has pescado un **${fish.name}** (${fish.rarity}) y ganado ${fish.price} monedas. Ahora tienes ${data.balance} monedas.`).setColor(embedColors.find(color => color.rarity === fish.rarity).color)] });
+
+            return interaction.reply({ embeds: [embed.setTitle('Pesca exitosa').setDescription(`Has pescado un ${fish.name} (${fish.rarity}) y ganado ${fish.price} monedas. Ahora tienes ${data.balance} monedas.`).setColor(embedColors.find(color => color.rarity === fish.rarity).color)] });
         } else {
-            data.save();
             const failMessage = failMessages[Math.floor(Math.random() * failMessages.length)];
             return interaction.reply({ embeds: [embed.setTitle('Pesca fallida').setDescription(`${failMessage} No has ganado ninguna moneda.`).setColor('Red')] });
         }
