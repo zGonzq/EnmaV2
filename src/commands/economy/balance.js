@@ -69,7 +69,7 @@ module.exports = {
             { name: 'Mine', value: getCooldownStatus(data.lastMine, 'minutes') },
             { name: 'Rob', value: getCooldownStatus(data.lastRob, 'hourly') },
             { name: 'Fish', value: getCooldownStatus(data.lastFish, 'minutes') },
-            { name: 'Crime', value: getCooldownStatus(data.lastCrime, 'minutes') },
+            { name: 'Crime', value: getCooldownStatus(data.lastCrime, 'half-hour') },
             { name: 'Gamble', value: getCooldownStatus(data.lastGamble, 'minutes') },
             { name: 'Bet', value: getCooldownStatus(data.lastBet, 'minutes') },
             { name: 'Coinflip', value: getCooldownStatus(data.lastCoinflip, 'minutes') },
