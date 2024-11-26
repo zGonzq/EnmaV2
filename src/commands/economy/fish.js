@@ -64,7 +64,7 @@ function getRandomFish() {
         }
     }
 
-    return fishTypes[fishTypes.length - 1];
+    return fishTypes[0];
 }
 
 module.exports = {
