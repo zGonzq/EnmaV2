@@ -69,8 +69,8 @@ module.exports = {
         const diff = now - lastCrime;
         const diffMinutes = Math.floor(diff / 1000 / 60);
 
-        if (diffMinutes < 45) {
-            const minutesLeft = 45 - diffMinutes;
+        if (diffMinutes < 30) {
+            const minutesLeft = 30 - diffMinutes;
             return interaction.reply({ embeds: [embed.setDescription(`Ya has intentado cometer un crimen recientemente. Puedes intentarlo de nuevo en ${minutesLeft} minutos.`).setColor('Red')] });
         }
 
