@@ -26,12 +26,12 @@ const client = new Client({
             ];
 
             let i = 0;
-
             setInterval(() => {
                 const activity = activities[i];
                 client.user.setActivity(activity.name, { type: activity.type });
                 i = ++i % activities.length;
-            })
+            }, 10000);
+
         });
 
     } catch (error) {
