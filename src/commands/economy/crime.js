@@ -17,6 +17,8 @@ const failMessages = [
     "¡El crimen fue un desastre!"
 ];
 
+const failPenalty = 1000; // Penalty amount for failing the crime
+
 module.exports = {
     name: 'crime',
     description: 'Intenta cometer un crimen para ganar monedas.',
@@ -72,6 +74,10 @@ module.exports = {
             return interaction.reply({ embeds: [embed.setDescription(`Ya has intentado cometer un crimen recientemente. Puedes intentarlo de nuevo en ${minutesLeft} minutos.`).setColor('Red')] });
         }
 
+        if (data.balance < 1000) {
+            return interaction.reply({ embeds: [embed.setDescription('No tienes suficientes monedas para pagar la condena en caso de fallar. Necesitas 1000 monedas.').setColor('Red')] });
+        }
+
         const camerasOff = interaction.options.getBoolean('cameras_off') || false;
         const lessPolice = interaction.options.getBoolean('less_police') || false;
         const advancedEquipment = interaction.options.getBoolean('advanced_equipment') || false;
@@ -111,9 +117,10 @@ module.exports = {
             return interaction.reply({ embeds: [embed.setTitle('Crimen exitoso').setDescription(`Has cometido un crimen y ganado ${earned} monedas. Ahora tienes ${data.balance} monedas.`).setColor('Green')] });
         } else {
             const failMessage = failMessages[Math.floor(Math.random() * failMessages.length)];
+            data.balance -= failPenalty;
             await data.save();
 
-            return interaction.reply({ embeds: [embed.setTitle('Crimen fallido').setDescription(`${failMessage} No has ganado ninguna moneda.`).setColor('Red')] });
+            return interaction.reply({ embeds: [embed.setTitle('Crimen fallido').setDescription(`${failMessage} Has perdido ${failPenalty} monedas. Ahora tienes ${data.balance} monedas.`).setColor('Red')] });
         }
     }
 }
