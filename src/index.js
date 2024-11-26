@@ -13,13 +13,6 @@ const client = new Client({
     ],
 });
 
-const activities = [
-    { name: 'Version 2 soon. 🚀', type: ActivityType.Watching },
-    { name: 'Economy system in progress. 🚀', type: ActivityType.Watching },
-    { name:  `${client.users.cache.size} users. 🚀`, type: ActivityType.Watching },
-    { name: `${client.guilds.cache.size} servers. 🚀`, type: ActivityType.Watching },
-];
-
 
 
 
@@ -31,14 +24,22 @@ const activities = [
 
         eventHandler(client);
         
-        await client.login(process.env.BOT_TOKEN);
+        await client.login(process.env.BOT_TOKEN).then(() => {
+            const activities = [
+                { name: 'Version 2 soon. 🚀', type: ActivityType.Watching },
+                { name: 'Economy system in progress. 🚀', type: ActivityType.Watching },
+                { name:  `${client.users.cache.size} users. 🚀`, type: ActivityType.Watching },
+                { name: `${client.guilds.cache.size} servers. 🚀`, type: ActivityType.Watching },
+            ];
 
-        const randomActivity = () => {
-            const activity = activities[Math.floor(Math.random() * activities.length)];
-            client.user.setActivity(activity.name, { type: activity.type });
-        };
+            let i = 0;
 
-        setInterval(randomActivity, 10000);
+            setInterval(() => {
+                const activity = activities[i];
+                client.user.setActivity(activity.name, { type: activity.type });
+                i = ++i % activities.length;
+            })
+        });
 
     } catch (error) {
         console.log(error);
