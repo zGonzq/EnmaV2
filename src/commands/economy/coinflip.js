@@ -55,7 +55,7 @@ module.exports = {
 
         data.lastCoinflip = now;
 
-        const win = Math.random() < 0.4; 
+        const win = Math.random() < 0.6; 
         if (win) {
             const winnings = amount * 2;
             data.balance += winnings;
