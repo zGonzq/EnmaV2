@@ -20,10 +20,7 @@ const activities = [
     { name: `${client.guilds.cache.size} servers. 🚀`, type: ActivityType.Watching },
 ];
 
-const randomActivity = () => {
-    const activity = activities[Math.floor(Math.random() * activities.length)];
-    client.user.setActivity(activity.name, { type: activity.type });
-}
+
 
 
 (async () => {
@@ -35,6 +32,11 @@ const randomActivity = () => {
         eventHandler(client);
         
         await client.login(process.env.BOT_TOKEN);
+
+        const randomActivity = () => {
+            const activity = activities[Math.floor(Math.random() * activities.length)];
+            client.user.setActivity(activity.name, { type: activity.type });
+        };
 
         setInterval(randomActivity, 60000);
 
