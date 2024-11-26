@@ -13,6 +13,15 @@ const client = new Client({
     ],
 });
 
+const activities = [
+    { name: 'Version 2 soon. 🚀', type: ActivityType.Watching },
+    { name: 'Economy system in process 🚀', type: ActivityType.Playing },
+    { name:  `${client.users.cache.size} users. 🚀`, type: ActivityType.Watching },
+    { name: `${client.guilds.cache.size} servers. 🚀`, type: ActivityType.Watching },
+];
+
+
+
 (async () => {
     try {
         mongoose.set('strictQuery', false);
@@ -22,8 +31,13 @@ const client = new Client({
         eventHandler(client);
         
         await client.login(process.env.BOT_TOKEN);
-        client.user.setActivity({ name: 'Version 2 soon. 🚀', type: ActivityType.Watching });
-
+        client.user.setActivity.then(() => {
+            setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * (activities.length - 1) + 1);
+                const activity = activities[randomIndex];
+                client.user.setActivity(activity.name, { type: activity.type });
+            }, 60000);
+        });
     } catch (error) {
         console.log(error);
     }
