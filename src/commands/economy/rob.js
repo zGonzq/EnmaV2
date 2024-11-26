@@ -84,13 +84,13 @@ module.exports = {
 
         userData.lastRob = now;
 
-        const success = Math.random() < 0.3;
+        const success = Math.random() < 0.3; // 30% chance of success
         if (success) {
             let stolenAmount;
             if (targetData.balance < 100) {
-                stolenAmount = Math.floor(targetData.balance * 0.2);
+                stolenAmount = Math.floor(targetData.balance * 0.2); // 20% of the target's balance if it's less than 100
             } else {
-                stolenAmount = Math.floor(Math.random() * (targetData.balance * 0.3));
+                stolenAmount = Math.floor(argetData.balance * 0.2); // 20% of the target's balance
             }
 
             targetData.balance -= stolenAmount;

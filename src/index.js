@@ -30,7 +30,7 @@ const client = new Client({
                 const activity = activities[i];
                 client.user.setActivity(activity.name, { type: activity.type });
                 i = ++i % activities.length;
-            }, 10000);
+            }, 30000);
 
         });
 
