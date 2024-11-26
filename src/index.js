@@ -4,13 +4,7 @@ const eventHandler = require('./handlers/eventHandler');
 const mongoose = require('mongoose');
 
 const client = new Client({
-    intents: [
-        IntentsBitField.Flags.Guilds,
-        IntentsBitField.Flags.GuildMessages,
-        IntentsBitField.Flags.GuildMembers,
-        IntentsBitField.Flags.MessageContent,
-        IntentsBitField.Flags.GuildPresences,
-    ],
+    intents: 3276799
 });
 
 
@@ -28,7 +22,6 @@ const client = new Client({
             const activities = [
                 { name: 'Version 2 soon. 🚀', type: ActivityType.Watching },
                 { name: 'Economy system in progress. 🚀', type: ActivityType.Watching },
-                { name:  `${client.users.cache.size} users. 🚀`, type: ActivityType.Watching },
                 { name: `${client.guilds.cache.size} servers. 🚀`, type: ActivityType.Watching },
             ];
 
