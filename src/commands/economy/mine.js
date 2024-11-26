@@ -98,6 +98,6 @@ module.exports = {
         data.balance += mineral.price;
         await data.save();
 
-        interaction.reply({ embeds: [embed.setTitle('Minería').setDescription(`Has encontrado ${mineral.name} (${mineral.rarity}) y ganado ${mineral.price} monedas. Ahora tienes ${data.balance} monedas.`).setColor(embedColors.find(color => color.rarity === mineral.rarity).color).setThumbnail("https://cdn-icons-gif.flaticon.com/12322/12322307.gif")] });
+        interaction.reply({ embeds: [embed.setTitle('Minería').setDescription(`Has encontrado **${mineral.name}** (${mineral.rarity}) y ganado ${mineral.price} monedas. Ahora tienes ${data.balance} monedas.`).setColor(embedColors.find(color => color.rarity === mineral.rarity).color).setThumbnail("https://cdn-icons-gif.flaticon.com/12322/12322307.gif")] });
     }
 }

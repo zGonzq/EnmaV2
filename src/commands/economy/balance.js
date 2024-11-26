@@ -79,7 +79,7 @@ module.exports = {
         const cooldownsText = cooldowns.map(cooldown => `${cooldown.name}: ${cooldown.value}`).join('\n');
 
         embed.setTitle(`Balance de ${targetUser.tag}`)
-            .setColor('Blue')
+            .setColor('Blurple')
             .addFields(
                 { name: 'Balance', value: `${data.balance} monedas`, inline: false },
                 { name: 'Tiempos restantes', value: cooldownsText, inline: false }
