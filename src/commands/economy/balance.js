@@ -57,6 +57,8 @@ module.exports = {
                 return `Disponible en ${5 - diffMinutes} minutos 🔴`;
             } else if (cooldown === 'half-hour' && diffMinutes < 30) {
                 return `Disponible en ${30 - diffMinutes} minutos 🔴`;
+            } else if (cooldown === 'ten minutes' && diffMinutes < 10) {
+                return `Disponible en ${10 - diffMinutes} minutos 🔴`;
             } else {
                 return 'Disponible 🟢';
             }
@@ -71,7 +73,7 @@ module.exports = {
             { name: 'Fish', value: getCooldownStatus(data.lastFish, 'minutes') },
             { name: 'Crime', value: getCooldownStatus(data.lastCrime, 'half-hour') },
             { name: 'Gamble', value: getCooldownStatus(data.lastGamble, 'minutes') },
-            { name: 'Coinflip', value: getCooldownStatus(data.lastCoinflip, 'minutes') },
+            { name: 'Coinflip', value: getCooldownStatus(data.lastCoinflip, 'ten minutes') },
             { name: 'Roulette', value: getCooldownStatus(data.lastRoulette, 'minutes') },
             { name: 'Lottery', value: getCooldownStatus(data.lastLottery, 'hourly') },
         ];
