@@ -72,10 +72,7 @@ module.exports = {
             { name: 'Rob', value: getCooldownStatus(data.lastRob, 'hourly') },
             { name: 'Fish', value: getCooldownStatus(data.lastFish, 'minutes') },
             { name: 'Crime', value: getCooldownStatus(data.lastCrime, 'half-hour') },
-            { name: 'Gamble', value: getCooldownStatus(data.lastGamble, 'minutes') },
             { name: 'Coinflip', value: getCooldownStatus(data.lastCoinflip, 'ten minutes') },
-            { name: 'Roulette', value: getCooldownStatus(data.lastRoulette, 'minutes') },
-            { name: 'Lottery', value: getCooldownStatus(data.lastLottery, 'hourly') },
         ];
 
         const cooldownsText = cooldowns.map(cooldown => `${cooldown.name}: ${cooldown.value}`).join('\n');
