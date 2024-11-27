@@ -9,7 +9,6 @@ require('dotenv').config({ path: __dirname + '/.env' });
  */
 
 module.exports = async (client, message) => {
-
     const channel = client.channels.cache.get('1180196042550038548');
     const messages = await channel.messages.fetch({ limit: 100 });
     messageToUpdate = messages.find(msg => msg.author.bot);
