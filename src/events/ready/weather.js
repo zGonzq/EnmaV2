@@ -48,5 +48,5 @@ module.exports = async (client, message) => {
         } catch (error) {
             console.log('Error al obtener los datos del clima:', error);
         }
-    }, 10000);
+    }, 30000);
 }
