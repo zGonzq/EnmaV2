@@ -17,7 +17,7 @@ const failMessages = [
     "¡El crimen fue un desastre!"
 ];
 
-const failPenalty = 1000; // Penalty amount for failing the crime
+const failPenalty = 1000; 
 
 module.exports = {
     name: 'crime',
